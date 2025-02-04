@@ -8,6 +8,7 @@ if [ "$(id -u)" -eq 0 ]; then
 fi
 
 echo "This script will install necessary dependencies, create backup of ~/.config in ~/.config_backup-* and install the dotfiles."
+
 while true; do
   read -rp "Proceed with the installation? [y/N]: " yn
   case $yn in
@@ -21,15 +22,18 @@ while true; do
       ;;
   esac
 done
+
 clear
 
-dependencies=(alacritty base-devel bat brightnessctl bspwm dunst eza feh firefox geany git gvfs-mtp imagemagick jq
+dependencies=(
+  alacritty base-devel bat brightnessctl bspwm dunst eza feh firefox geany git gvfs-mtp imagemagick jq
   jgmenu kitty libwebp lightdm lightdm-gtk-greeter lsd maim mpc mpd ncmpcpp neovim npm nm-connection-editor pamixer
   pacman-contrib papirus-icon-theme physlock picom playerctl polybar polkit-gnome python-gobject ranger redshift rofi
   rustup sxhkd thunar tmux tumbler ttf-dejavu ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-joypixels
   ttf-liberation ttf-opensans ttf-terminus-nerd ttf-indic-otf ueberzug webp-pixbuf-loader xclip xdg-user-dirs xdo xdotool
   xorg-server xorg-xdpyinfo xorg-xinit xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo zsh zsh-autosuggestions
-  zsh-history-substring-search zsh-syntax-highlighting)
+  zsh-history-substring-search zsh-syntax-highlighting
+)
 
 # Install dependencies
 echo "Installing dependencies"
@@ -188,3 +192,4 @@ cd $HOME
 rm -rf .cargo .rustup
 
 echo "Installation completed. You may now reboot"
+
